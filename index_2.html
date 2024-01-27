@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Преобразователь двоичного кода в шестнадцатеричный</title>
+</head>
+<body>
+  <h1>Преобразователь двоичного кода в шестнадцатеричный</h1>
+  <label for="binaryInput">Введите двоичное число:</label>
+  <input type="text" id="binaryInput">
+  <button onclick="convertBinaryToHex()">Преобразовать</button>
+  <p id="result"></p>
+
+  <script>
+    function convertBinaryToHex() {
+      var binaryNumber = document.getElementById('binaryInput').value;
+      var decimalNumber = parseInt(binaryNumber, 2);
+      var hexadecimalNumber = decimalNumber.toString(16);
+      document.getElementById('result').textContent = "Шестнадцатеричный эквивалент: " + hexadecimalNumber.toUpperCase(); 
+    }
+  </script>
+</body>
+</html>

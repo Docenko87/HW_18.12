@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Odd Numbers</title>
+  <style>
+    .red-text {
+      color: red;
+    }
+    .circle {
+      width: 50px;
+      height: 50px;
+      background-color: blue;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .row{
+        display: flex;
+    }
+  </style>
+</head>
+<body>
+  <h1>Odd Numbers</h1>
+  <label for="numberInput">Enter the number of odd numbers:</label>
+  <input type="number" id="numberInput">
+  <button onclick="generateOddNumbers()">Generate</button>
+  <div id="output"></div>
+  <h1>Ten Circles in a Row</h1>
+  <div class="row">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+
+  <script>
+    function generateOddNumbers() {
+      var outputDiv = document.getElementById('output');
+      outputDiv.innerHTML = ''; 
+
+      var count = parseInt(document.getElementById('numberInput').value);
+      if (isNaN(count) || count <= 0) {
+        outputDiv.textContent = 'Please enter a valid positive number.';
+        return;
+      }
+
+      var sum = 0;
+      var numbers = [];
+      for (var i = 1; numbers.length < count; i += 2) {
+        numbers.push(i);
+        sum += i;
+      }
+
+      var average = sum / count;
+
+      var maxNumberLength = Math.max.apply(null, numbers).toString().length;
+
+      var reversedNumbers = numbers.slice().reverse();
+
+      numbers.forEach(function(number) {
+        var span = document.createElement('span');
+        span.textContent = '-' + number;
+        span.style.fontSize = maxNumberLength + 'em';
+        span.classList.add('red-text');
+        outputDiv.appendChild(span);
+      });
+
+      var averageSpan = document.createElement('span');
+      averageSpan.textContent = ' Average: ' + average.toFixed(2);
+      outputDiv.appendChild(averageSpan);
+
+      var reversedOutput = document.createElement('div');
+      reversedNumbers.forEach(function(number) {
+        var span = document.createElement('span');
+        span.textContent = '-' + number;
+        span.style.fontSize = maxNumberLength + 'em';
+        span.classList.add('red-text');
+        reversedOutput.appendChild(span);
+      });
+
+      var reversedSpan = document.createElement('span');
+      reversedSpan.textContent = ' Reversed: ';
+      outputDiv.appendChild(reversedSpan);
+      outputDiv.appendChild(reversedOutput);
+    }
+  </script>
+</body>
+</html>
